@@ -11,7 +11,7 @@ cte_main AS (
 											[Ingestion.EntityData.US].Franchise F
 							LEFT JOIN [Ingestion.EntityData.US].Ownership OWN on OWN.FranchiseId =F.Id and OWN.Active = 1
 							LEFT JOIN [Ingestion.EntityData.US].Owner O on O.Id = OWN.OwnerId and O.Active = 1
-							Left Join [Ingestion.EntityData.US].OwnerTelecom OT on O.Id = OT.OwnerId and OT.System = 'Email' and OT.[USE] ='Work'
+							LEFT JOIN [Ingestion.EntityData.US].OwnerTelecom OT on O.Id = OT.OwnerId and OT.System = 'Email' and OT.[USE] ='Work'
 							WHERE OT.Value IS NOT NULL 	AND F.Region <> 'Canada'  and F.CreatedSource <> 'TestData'
 
 			 UNION
