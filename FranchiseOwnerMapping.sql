@@ -25,7 +25,7 @@ cte_main AS (
 							LEFT JOIN [Ingestion.EntityData.US].LegalEntity L on L.Id = LF.LegalEntityId and L.Active = 1
 							LEFT JOIN [Ingestion.EntityData.US].LEOwnership LO ON LO.LegalEntityId = L.Id and LO.Active = 1
 							LEFT JOIN [Ingestion.EntityData.US].Owner O on O.Id = LO.OwnerId and LO.Active = 1
-							Left Join [Ingestion.EntityData.US].OwnerTelecom OT on O.Id = OT.OwnerId and OT.System = 'Email' and OT.[USE] ='Work'
+							LEFT JOIN [Ingestion.EntityData.US].OwnerTelecom OT on O.Id = OT.OwnerId and OT.System = 'Email' and OT.[USE] ='Work'
 							WHERE OT.Value IS NOT NULL 	AND F.Region <> 'Canada'  and F.CreatedSource <> 'TestData'
 
 UNION
@@ -37,7 +37,7 @@ UNION
 										[Ingestion.EntityData.CA].Franchise F
 						LEFT JOIN [Ingestion.EntityData.CA].Ownership OWN on OWN.FranchiseId =F.Id and OWN.Active = 1
 						LEFT JOIN [Ingestion.EntityData.CA].Owner O on O.Id = OWN.OwnerId and O.Active = 1
-						Left Join [Ingestion.EntityData.CA].OwnerTelecom OT on O.Id = OT.OwnerId and OT.System = 'Email' and OT.[USE] ='Work'
+						LEFT JOIN [Ingestion.EntityData.CA].OwnerTelecom OT on O.Id = OT.OwnerId and OT.System = 'Email' and OT.[USE] ='Work'
 						WHERE OT.Value IS NOT NULL 	 and F.CreatedSource <> 'TestData'
 
 			 UNION
@@ -51,7 +51,7 @@ UNION
 					LEFT JOIN [Ingestion.EntityData.CA].LegalEntity L on L.Id = LF.LegalEntityId and L.Active = 1
 					LEFT JOIN [Ingestion.EntityData.CA].LegalEntityOwnership LO ON LO.LegalEntityId = L.Id and LO.Active = 1
 					LEFT JOIN [Ingestion.EntityData.CA].Owner O on O.Id = LO.OwnerId and LO.Active = 1
-					Left Join [Ingestion.EntityData.CA].OwnerTelecom OT on O.Id = OT.OwnerId and OT.System = 'Email' and OT.[USE] ='Work'
+					LEFT JOIN [Ingestion.EntityData.CA].OwnerTelecom OT on O.Id = OT.OwnerId and OT.System = 'Email' and OT.[USE] ='Work'
 					WHERE OT.Value IS NOT NULL  and F.CreatedSource <> 'TestData'
 
 ), 
