@@ -131,3 +131,18 @@ AND b.agency_id  = inv.agency_id
  
               
 )
+
+
+
+select h.source_id,h.sub_total,a.SumTotal from cte_header h join 
+(
+select SUM(Total) SumTotal ,sourceid from (
+select SUM(final_bill_amount)*1.00 Total,transaction_id as sourceid  from cte_carelog c 
+group by transaction_id
+UNION
+select SUM(final_bill_amount)*1.00 Total,transaction_id as sourceid from cte_bill_item
+group by transaction_id
+)
+group by sourceid
+) a
+on a.sourceid = h.source_id
